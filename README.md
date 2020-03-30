@@ -10,4 +10,4 @@
 
 ### 微信公众号：前端开发那些事儿，欢迎关注！
 
-![微信开发那些事儿](https://github.com/wumingwei/FE-interviews/blob/master/images/qrcode_for_gh_09f6cc1efd86_344.jpg?raw=true)
+![微信开发那些事儿](./images/wx-qrcode.gif)
