@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JS 模块化、组件化、工程化相关的 19 道面试题</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.3;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h4 id="js-%e6%a8%a1%e5%9d%97%e5%8c%96%e7%bb%84%e4%bb%b6%e5%8c%96%e5%b7%a5%e7%a8%8b%e5%8c%96%e7%9b%b8%e5%85%b3%e7%9a%84-19-%e9%81%93%e9%9d%a2%e8%af%95%e9%a2%98">JS 模块化、组件化、工程化相关的 19 道面试题</h4>
+<ul>
+<li>什么是模块化？</li>
+<li>简述模块化的发展历程？</li>
+<li>AMD、CMD、CommonJS 与 ES6 模块化的区别？</li>
+<li>它们是如何使用的？</li>
+<li>模块化思想在项目中如何实践的？</li>
+<li>export 是什么？</li>
+<li>module.export、export 与 export defalut 有什么区别？</li>
+<li>如何在工程中使用模块？</li>
+<li>什么是组件化？</li>
+<li>组件化的原则是什么？</li>
+<li>全局组件与局部组件的区别？</li>
+<li>如何注册一个全局组件，并使用它？</li>
+<li>局部组件又是如何注册并使用的？</li>
+<li>组件的封装需要注意什么问题？</li>
+<li>如何封装一个高复用的前端组件？</li>
+<li>什么是工程化思想？</li>
+<li>工程化可以解决什么问题？</li>
+<li>是如何处理这些问题的？</li>
+<li>工程化需要注意哪些问题？</li>
+</ul>
+<hr>
+<h4 id="%e9%97%ae%e4%bb%80%e4%b9%88%e6%98%af%e6%a8%a1%e5%9d%97%e5%8c%96"><strong>问：什么是模块化？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e7%ae%80%e8%bf%b0%e6%a8%a1%e5%9d%97%e5%8c%96%e7%9a%84%e5%8f%91%e5%b1%95%e5%8e%86%e7%a8%8b"><strong>问：简述模块化的发展历程？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%aeamdcmdcommonjs-%e4%b8%8e-es6-%e6%a8%a1%e5%9d%97%e5%8c%96%e7%9a%84%e5%8c%ba%e5%88%ab"><strong>问：AMD、CMD、CommonJS 与 ES6 模块化的区别？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%ae%83%e4%bb%ac%e6%98%af%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e7%9a%84"><strong>问：它们是如何使用的？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e6%a8%a1%e5%9d%97%e5%8c%96%e6%80%9d%e6%83%b3%e5%9c%a8%e9%a1%b9%e7%9b%ae%e4%b8%ad%e5%a6%82%e4%bd%95%e5%ae%9e%e8%b7%b5%e7%9a%84"><strong>问：模块化思想在项目中如何实践的？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%aeexport-%e6%98%af%e4%bb%80%e4%b9%88"><strong>问：export 是什么？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%aemoduleexportexport-%e4%b8%8e-export-defalut-%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab"><strong>问：module.export、export 与 export defalut 有什么区别？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%a6%82%e4%bd%95%e5%9c%a8%e5%b7%a5%e7%a8%8b%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%9d%97"><strong>问：如何在工程中使用模块？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e4%bb%80%e4%b9%88%e6%98%af%e7%bb%84%e4%bb%b6%e5%8c%96"><strong>问：什么是组件化？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e7%bb%84%e4%bb%b6%e5%8c%96%e7%9a%84%e5%8e%9f%e5%88%99%e6%98%af%e4%bb%80%e4%b9%88"><strong>问：组件化的原则是什么？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%85%a8%e5%b1%80%e7%bb%84%e4%bb%b6%e4%b8%8e%e5%b1%80%e9%83%a8%e7%bb%84%e4%bb%b6%e7%9a%84%e5%8c%ba%e5%88%ab"><strong>问：全局组件与局部组件的区别？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%a6%82%e4%bd%95%e6%b3%a8%e5%86%8c%e4%b8%80%e4%b8%aa%e5%85%a8%e5%b1%80%e7%bb%84%e4%bb%b6%e5%b9%b6%e4%bd%bf%e7%94%a8%e5%ae%83"><strong>问：如何注册一个全局组件，并使用它？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%b1%80%e9%83%a8%e7%bb%84%e4%bb%b6%e5%8f%88%e6%98%af%e5%a6%82%e4%bd%95%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%bd%bf%e7%94%a8%e7%9a%84"><strong>问：局部组件又是如何注册并使用的？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e7%bb%84%e4%bb%b6%e7%9a%84%e5%b0%81%e8%a3%85%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98"><strong>问：组件的封装需要注意什么问题？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%a6%82%e4%bd%95%e5%b0%81%e8%a3%85%e4%b8%80%e4%b8%aa%e9%ab%98%e5%a4%8d%e7%94%a8%e7%9a%84%e5%89%8d%e7%ab%af%e7%bb%84%e4%bb%b6"><strong>问：如何封装一个高复用的前端组件？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e4%bb%80%e4%b9%88%e6%98%af%e5%b7%a5%e7%a8%8b%e5%8c%96%e6%80%9d%e6%83%b3"><strong>问：什么是工程化思想？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%b7%a5%e7%a8%8b%e5%8c%96%e5%8f%af%e4%bb%a5%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98"><strong>问：工程化可以解决什么问题？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e6%98%af%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e8%bf%99%e4%ba%9b%e9%97%ae%e9%a2%98%e7%9a%84"><strong>问：是如何处理这些问题的？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae%e5%b7%a5%e7%a8%8b%e5%8c%96%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e5%93%aa%e4%ba%9b%e9%97%ae%e9%a2%98"><strong>问：工程化需要注意哪些问题？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+
+    </body>
+    </html>
