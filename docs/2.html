@@ -2,11 +2,11 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>JS 模块化、组件化、工程化相关的 19 道面试题</title>
-        
+        <title>JS 模块化、组件化、工程化相关的 16 道面试题</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <style>
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
@@ -18,88 +18,294 @@
             }
         </style>
         
-        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
     </head>
     <body class="vscode-light">
-        <h4 id="js-%e6%a8%a1%e5%9d%97%e5%8c%96%e7%bb%84%e4%bb%b6%e5%8c%96%e5%b7%a5%e7%a8%8b%e5%8c%96%e7%9b%b8%e5%85%b3%e7%9a%84-19-%e9%81%93%e9%9d%a2%e8%af%95%e9%a2%98">JS 模块化、组件化、工程化相关的 19 道面试题</h4>
+        <h5 id="js-%e6%a8%a1%e5%9d%97%e5%8c%96%e7%bb%84%e4%bb%b6%e5%8c%96%e5%b7%a5%e7%a8%8b%e5%8c%96%e7%9b%b8%e5%85%b3%e7%9a%84-16-%e9%81%93%e9%9d%a2%e8%af%95%e9%a2%98">JS 模块化、组件化、工程化相关的 16 道面试题</h5>
 <ul>
-<li>什么是模块化？</li>
-<li>简述模块化的发展历程？</li>
-<li>AMD、CMD、CommonJS 与 ES6 模块化的区别？</li>
-<li>它们是如何使用的？</li>
-<li>模块化思想在项目中如何实践的？</li>
-<li>export 是什么？</li>
-<li>module.export、export 与 export defalut 有什么区别？</li>
-<li>如何在工程中使用模块？</li>
-<li>什么是组件化？</li>
-<li>组件化的原则是什么？</li>
-<li>全局组件与局部组件的区别？</li>
-<li>如何注册一个全局组件，并使用它？</li>
-<li>局部组件又是如何注册并使用的？</li>
-<li>组件的封装需要注意什么问题？</li>
-<li>如何封装一个高复用的前端组件？</li>
-<li>什么是工程化思想？</li>
-<li>工程化可以解决什么问题？</li>
-<li>是如何处理这些问题的？</li>
-<li>工程化需要注意哪些问题？</li>
+<li>1.什么是模块化？</li>
+<li>2.简述模块化的发展历程？</li>
+<li>3.AMD、CMD、CommonJS 与 ES6 模块化的区别？</li>
+<li>4.它们是如何使用的？</li>
+<li>5.模块化思想在项目中如何实践的？</li>
+<li>6.export 是什么？</li>
+<li>7.module.export、export 与 export defalut 有什么区别？</li>
+<li>8.什么是组件化？</li>
+<li>9.组件化的原则是什么？</li>
+<li>10.全局组件与局部组件的区别？</li>
+<li>11.如何注册一个全局组件，并使用它？</li>
+<li>12.局部组件又是如何注册并使用的？</li>
+<li>13.如何封装一个高复用的 Vue 前端组件？</li>
+<li>14.什么是前端工程化思想？</li>
+<li>15.工程化可以解决什么问题？</li>
+<li>16.是如何处理这些问题的？</li>
 </ul>
 <hr>
-<h4 id="%e9%97%ae%e4%bb%80%e4%b9%88%e6%98%af%e6%a8%a1%e5%9d%97%e5%8c%96"><strong>问：什么是模块化？</strong></h4>
+<h5 id="%e9%97%ae1%e4%bb%80%e4%b9%88%e6%98%af%e6%a8%a1%e5%9d%97%e5%8c%96"><strong>问：1.什么是模块化？</strong></h5>
 <p><strong>答：</strong></p>
+<p>将 JS 分割成不同职责的 JS，解耦功能，来用于解决全局变量污染、 变量冲突、代码冗余、依赖关系难以维护等问题的一种 JS 管理思想，这就是模块化的过程。</p>
 <hr>
-<h4 id="%e9%97%ae%e7%ae%80%e8%bf%b0%e6%a8%a1%e5%9d%97%e5%8c%96%e7%9a%84%e5%8f%91%e5%b1%95%e5%8e%86%e7%a8%8b"><strong>问：简述模块化的发展历程？</strong></h4>
+<h5 id="%e9%97%ae2%e7%ae%80%e8%bf%b0%e6%a8%a1%e5%9d%97%e5%8c%96%e7%9a%84%e5%8f%91%e5%b1%95%e5%8e%86%e7%a8%8b"><strong>问：2.简述模块化的发展历程？</strong></h5>
 <p><strong>答：</strong></p>
+<p>模块化的发展主要从最初的无模块化，发展到闭包式的 IIFE 立即执行解决模块化，到后来的 CommonJS、 AMD、CMD，直到 ES6 模块化规范的出现。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// jQuery风格的匿名自执行</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">window</span>) </span>{
+  <span class="hljs-comment">//代码</span>
+  <span class="hljs-built_in">window</span>.jQuery = <span class="hljs-built_in">window</span>.$ = jQuery; <span class="hljs-comment">//通过给window添加属性而暴漏到全局</span>
+})(<span class="hljs-built_in">window</span>);
+</div></code></pre>
 <hr>
-<h4 id="%e9%97%aeamdcmdcommonjs-%e4%b8%8e-es6-%e6%a8%a1%e5%9d%97%e5%8c%96%e7%9a%84%e5%8c%ba%e5%88%ab"><strong>问：AMD、CMD、CommonJS 与 ES6 模块化的区别？</strong></h4>
+<h5 id="%e9%97%ae3amdcmdcommonjs-%e4%b8%8e-es6-%e6%a8%a1%e5%9d%97%e5%8c%96%e7%9a%84%e5%8c%ba%e5%88%ab"><strong>问：3.AMD、CMD、CommonJS 与 ES6 模块化的区别？</strong></h5>
 <p><strong>答：</strong></p>
+<p>CommonJS 是 NodeJs 的一种模块同步加载规范，一个文件即是一个模块，使用时直接 require(),即可，但是不适用于客户端，因为加载模块的时候有可能出现‘假死’状况，必须等模块请求成功，加载完毕才可以执行调用的模块。但是在服务期不存在这种状况。</p>
+<p>AMD (Asynchronous Module Definition):异步模块加载机制。requireJS 就是 AMD 规范，使用时，先定义所有依赖，然后在加载完成后的回调函数中执行，属于依赖前置，使用：define()来定义模块，require([module], callback)来使用模块。<br>
+AMD 同时也保留 CommonJS 中的 require、exprots、module，可以不把依赖罗列在 dependencies 数组中，而是在代码中用 require 来引入。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// AMD规范</span>
+<span class="hljs-built_in">require</span>([<span class="hljs-string">'modA'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">modA</span>) </span>{
+  modA.start();
+});
+
+<span class="hljs-comment">// AMD使用require加载模块</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'main2.js执行'</span>);
+  <span class="hljs-built_in">require</span>([<span class="hljs-string">'a'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>{
+    a.hello();
+  });
+
+  $(<span class="hljs-string">'#b'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">require</span>([<span class="hljs-string">'b'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">b</span>) </span>{
+      b.hello();
+    });
+  });
+});
+</div></code></pre>
+<p>缺点：属于依赖前置，需要加载所有的依赖， 不可以像 CommonJS 在用的时候再 require，异步加载后再执行。</p>
+<p>CMD(Common Module Definition):定义模块时无需罗列依赖数组，在 factory 函数中需传入形参 require,exports,module，然后它会调用 factory 函数的 toString 方法，对函数的内容进行正则匹配，通过匹配到的 require 语句来分析依赖，这样就真正实现了 CommonJS 风格的代码。是 seajs 推崇的规范，是依赖就近原则。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// CMD规范</span>
+<span class="hljs-comment">// a.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">require, exports, module</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a.js执行'</span>);
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">hello</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello, a.js'</span>);
+    }
+  };
+});
+
+<span class="hljs-comment">// b.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">require, exports, module</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'b.js执行'</span>);
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">hello</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello, b.js'</span>);
+    }
+  };
+});
+
+<span class="hljs-comment">// main.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">require, exports, module</span>) </span>{
+  <span class="hljs-keyword">var</span> modA = <span class="hljs-built_in">require</span>(<span class="hljs-string">'a'</span>);
+  modA.start();
+
+  <span class="hljs-keyword">var</span> modA = <span class="hljs-built_in">require</span>(<span class="hljs-string">'b'</span>);
+  modB.start();
+});
+</div></code></pre>
+<p>ES6 模块化是通过 export 命令显式的指定输出的代码，输入也是用静态命令的形式。属于编译时加载。比 CommonJS 效率高，可以按需加载指定的方法。适合服务端与浏览器端。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// a.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> a = <span class="hljs-string">'a'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(b);
+};
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> c = <span class="hljs-string">'c'</span>;
+
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> { a, b } <span class="hljs-keyword">from</span> <span class="hljs-string">'a.js'</span>;
+
+<span class="hljs-built_in">console</span>.log(a);
+<span class="hljs-built_in">console</span>.log(b);
+</div></code></pre>
+<p>区别：</p>
+<p>AMD 和 CMD 同样都是异步加载模块，两者加载的机制不同，前者为依赖前置、后者为依赖就近。</p>
+<p>CommonJS 为同步加载模块，NodeJS 内部的模块管理规范，不适合浏览器端。</p>
+<p>ES6 模块化编译时加载，通过 export,import 静态输出输入代码，效率高，同时适用于服务端与浏览器端。</p>
 <hr>
-<h4 id="%e9%97%ae%e5%ae%83%e4%bb%ac%e6%98%af%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e7%9a%84"><strong>问：它们是如何使用的？</strong></h4>
+<h5 id="%e9%97%ae5%e5%ae%83%e4%bb%ac%e6%98%af%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e7%9a%84"><strong>问：5.它们是如何使用的？</strong></h5>
 <p><strong>答：</strong></p>
+<p>CommonJS 使用 module.exports,向外暴露模块，使用 require()引入模块，然后直接调用其中的数据或方法。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// m1.js 模块定义</span>
+<span class="hljs-built_in">module</span>.exports={
+    <span class="hljs-string">'date1'</span>:<span class="hljs-number">123</span>,
+    <span class="hljs-string">'date2'</span>:{<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">b</span>:<span class="hljs-string">'hello'</span>},
+    <span class="hljs-string">'function1'</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{...},
+};
+<span class="hljs-comment">// main.js  模块使用</span>
+<span class="hljs-keyword">var</span> <span class="hljs-built_in">module</span>=<span class="hljs-built_in">require</span>(m1.js);
+<span class="hljs-built_in">module</span>.data1;
+<span class="hljs-built_in">module</span>.data2;
+<span class="hljs-built_in">module</span>.function1();
+</div></code></pre>
+<p>AMD 使用 define(['m1','m2','m3',...],function(m1,m2,m3,...){})来定义模块内部的输出,使用 require(['m1','m2',...],function(m1,m2,...){})来调用模块并使用它。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 定义：</span>
+define([<span class="hljs-string">'module1'</span>,<span class="hljs-string">'module2'</span>,<span class="hljs-string">'module3'</span>,...],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module1,module2,module3,...</span>)</span>{})
+
+<span class="hljs-comment">// 引入并调用：</span>
+<span class="hljs-built_in">require</span>([<span class="hljs-string">'modA'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">modA</span>) </span>{
+  modA.start();
+});
+</div></code></pre>
+<p>CMD 用 define(factory)来定义模块或使用它，factory 可以是数据也可以是方法，而后 define 内部通过 module.exports 向外部暴露 。在使用时，，通过工厂函数 function(require, exports, module)中的 require 来引入其他模块并使用该模块。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 定义 m1.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">require, exports, module</span>) </span>{
+  <span class="hljs-comment">//内部变量数据</span>
+  <span class="hljs-keyword">var</span> data = <span class="hljs-string">'atguigu.com'</span>
+  <span class="hljs-comment">//内部函数</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'module1 show() '</span> + data)
+  }
+  <span class="hljs-comment">//向外暴露</span>
+  exports.show = show
+})；
+<span class="hljs-comment">// m2.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">require, exports, module</span>) </span>{
+  <span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">msg</span>: <span class="hljs-string">'I Will Back'</span>
+  };
+});
+<span class="hljs-comment">// m3.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">require, exports, module</span>) </span>{
+  <span class="hljs-keyword">const</span> API_KEY = <span class="hljs-string">'abc123'</span>
+  exports.API_KEY = API_KEY
+});
+<span class="hljs-comment">// m4.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">require, exports, module</span>) </span>{
+  <span class="hljs-comment">//引入依赖模块(同步)</span>
+  <span class="hljs-keyword">var</span> module2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./module2'</span>)
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'module4 show() '</span> + module2.msg)
+  }
+  exports.show = show
+  <span class="hljs-comment">//引入依赖模块(异步)，最后执行，因为是异步的，主线的先执行完才会执行这</span>
+  <span class="hljs-built_in">require</span>.async(<span class="hljs-string">'./module3'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m3</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'异步引入依赖模块3  '</span> + m3.API_KEY)
+  })
+});
+
+<span class="hljs-comment">// main.js调用模块并使用</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">require</span>) </span>{
+  <span class="hljs-keyword">var</span> m1 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./m1'</span>)
+  <span class="hljs-keyword">var</span> m4 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./m3'</span>)
+  m1.show()
+  m4.show()
+});
+</div></code></pre>
 <hr>
-<h4 id="%e9%97%ae%e6%a8%a1%e5%9d%97%e5%8c%96%e6%80%9d%e6%83%b3%e5%9c%a8%e9%a1%b9%e7%9b%ae%e4%b8%ad%e5%a6%82%e4%bd%95%e5%ae%9e%e8%b7%b5%e7%9a%84"><strong>问：模块化思想在项目中如何实践的？</strong></h4>
+<h5 id="%e9%97%ae6export-%e6%98%af%e4%bb%80%e4%b9%88"><strong>问：6.export 是什么？</strong></h5>
 <p><strong>答：</strong></p>
+<p>export 是 ES6 中用于向外暴露数据或方法的一个命令。<br>
+通常使用 export 关键字来输出一个变量，该变量可以是数据也可以是方法。<br>
+而后，使用 import 来引入，并使用它。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// a.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> a = <span class="hljs-string">'hello'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params">name</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello,'</span> + name);
+}
+
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> { a, sayHello } <span class="hljs-keyword">from</span> <span class="hljs-string">'./a.js'</span>;
+<span class="hljs-built_in">console</span>.log(a);
+<span class="hljs-built_in">console</span>.log(sayHello(<span class="hljs-string">'LiMing'</span>));
+</div></code></pre>
 <hr>
-<h4 id="%e9%97%aeexport-%e6%98%af%e4%bb%80%e4%b9%88"><strong>问：export 是什么？</strong></h4>
+<h5 id="%e9%97%ae7export-defalutexport-%e4%b8%8e-moduleexports-%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab"><strong>问：7.export defalut、export 与 module.exports 有什么区别？</strong></h5>
 <p><strong>答：</strong></p>
+<p>都是用于向外部暴露数据的命令。<br>
+export defalut 与 export 是 ES6 Module 中对外暴露数据的。<br>
+export defalut 是向外部默认暴露数据，使用时 import 引入时需要为该模块指定一个任意名称，import 后不可以使用{}；<br>
+export 是单个暴露数据或方法，利用 import{}来引入，并且{}内名称与 export 一一对应，{}也使用 as 为某个数据或方法指定新的名称；<br>
+module.exports 是 CommonJS 的一个 exports 变量，提供对外的接口。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// export defalut示例</span>
+<span class="hljs-comment">// a.js</span>
+<span class="hljs-keyword">var</span> a=<span class="hljs-string">'Hello World！'</span>;
+<span class="hljs-keyword">export</span> defalut=a;
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> A <span class="hljs-keyword">from</span> <span class="hljs-string">'a.js'</span>;
+<span class="hljs-built_in">console</span>.log(A);
+
+<span class="hljs-comment">// export 示例</span>
+<span class="hljs-comment">// b.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> b=<span class="hljs-string">'b'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params">name</span>)</span>{
+  <span class="hljs-built_in">console</span>.log(name+<span class="hljs-string">'Hello World！'</span>);
+}
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> {b,sayHello} <span class="hljs-keyword">from</span> <span class="hljs-string">'b.js'</span>
+sayHello(<span class="hljs-string">'LiMing'</span>);
+<span class="hljs-built_in">console</span>.log(b);
+
+<span class="hljs-comment">// module.exports示例</span>
+<span class="hljs-comment">// c.js</span>
+<span class="hljs-keyword">var</span>  c=<span class="hljs-string">'123'</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getValue</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">return</span> c;
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateValue</span>(<span class="hljs-params">value</span>)</span>{
+  c=value;
+}
+<span class="hljs-built_in">module</span>.exports={
+  getValue,
+  updateValue
+}
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> handleEvent <span class="hljs-keyword">from</span> <span class="hljs-string">'c.js'</span>;
+handleEvent.getValue();
+handleEvent.updateValue(<span class="hljs-string">'456'</span>);
+</div></code></pre>
 <hr>
-<h4 id="%e9%97%aemoduleexportexport-%e4%b8%8e-export-defalut-%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab"><strong>问：module.export、export 与 export defalut 有什么区别？</strong></h4>
+<h5 id="%e9%97%ae8%e4%bb%80%e4%b9%88%e6%98%af%e7%bb%84%e4%bb%b6%e5%8c%96"><strong>问：8.什么是组件化？</strong></h5>
 <p><strong>答：</strong></p>
+<p>组件化主要是从 Html 角度把页面解耦成一个一个组件的过程，便于代码的高复用、单一职责、方便维护、避免代码冗余的一种解决方案。</p>
 <hr>
-<h4 id="%e9%97%ae%e5%a6%82%e4%bd%95%e5%9c%a8%e5%b7%a5%e7%a8%8b%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%a8%a1%e5%9d%97"><strong>问：如何在工程中使用模块？</strong></h4>
-<p><strong>答：</strong></p>
+<h5 id="%e9%97%ae9%e7%bb%84%e4%bb%b6%e5%8c%96%e7%9a%84%e5%8e%9f%e5%88%99%e6%98%af%e4%bb%80%e4%b9%88"><strong>问：9.组件化的原则是什么？</strong></h5>
+<p><strong>答：</strong><br>
+组件的主要原则就是单一职责，高复用性。在前端的开发中，我们通常会对一个页面解耦拆分成许多组件，确保一个组件只负责一个事情，同时尽可能减少外部的关联，组件的相关逻辑只在组件内部处理，利用传递参数，事件通信来保持组件对外的通信。</p>
+<p>对于 Vue 项目来说，我们一般把页面中频繁使用的组件，注册为全局可用；其他的按需在页面中局部使用。</p>
+<h5 id="%e9%97%ae10%e5%85%a8%e5%b1%80%e7%bb%84%e4%bb%b6%e4%b8%8e%e5%b1%80%e9%83%a8%e7%bb%84%e4%bb%b6%e7%9a%84%e5%8c%ba%e5%88%ab"><strong>问：10.全局组件与局部组件的区别？</strong></h5>
+<p><strong>答：</strong><br>
+全局组件经过注册后，全局可用，可以在任何地方使用，局部组件我们一般定义好后，在页面需要的地方按需引入。<br>
+在 Vue 中，全局组件一般是全局使用的 Toast、Loading、Confirm 等，而局部组件是页面中的某个功能的 vue 组件；<br>
+另外全局组件与局部组件注册方式不同。</p>
 <hr>
-<h4 id="%e9%97%ae%e4%bb%80%e4%b9%88%e6%98%af%e7%bb%84%e4%bb%b6%e5%8c%96"><strong>问：什么是组件化？</strong></h4>
-<p><strong>答：</strong></p>
+<h5 id="%e9%97%ae11vue-%e5%a6%82%e4%bd%95%e6%b3%a8%e5%86%8c%e4%b8%80%e4%b8%aa%e5%85%a8%e5%b1%80%e7%bb%84%e4%bb%b6%e5%b9%b6%e4%bd%bf%e7%94%a8%e5%ae%83"><strong>问：11.Vue 如何注册一个全局组件，并使用它？</strong></h5>
+<p><strong>答：</strong><br>
+一般我们定义好.vue 的组件后，通过 import 引入，使用 Vue.Component()来注册全局注册组件。这样我们就可以在其他地方使用它了。</p>
 <hr>
-<h4 id="%e9%97%ae%e7%bb%84%e4%bb%b6%e5%8c%96%e7%9a%84%e5%8e%9f%e5%88%99%e6%98%af%e4%bb%80%e4%b9%88"><strong>问：组件化的原则是什么？</strong></h4>
+<h5 id="%e9%97%ae12vue-%e5%b1%80%e9%83%a8%e7%bb%84%e4%bb%b6%e5%8f%88%e6%98%af%e5%a6%82%e4%bd%95%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%bd%bf%e7%94%a8%e7%9a%84"><strong>问：12.Vue 局部组件又是如何注册并使用的？</strong></h5>
 <p><strong>答：</strong></p>
+<p>局部组件也是通过 import 引入，不同的是在 Vue 实例中 components 对象中注册，我们就可以在 templete 中使用了。</p>
 <hr>
-<h4 id="%e9%97%ae%e5%85%a8%e5%b1%80%e7%bb%84%e4%bb%b6%e4%b8%8e%e5%b1%80%e9%83%a8%e7%bb%84%e4%bb%b6%e7%9a%84%e5%8c%ba%e5%88%ab"><strong>问：全局组件与局部组件的区别？</strong></h4>
-<p><strong>答：</strong></p>
+<h5 id="%e9%97%ae13%e5%a6%82%e4%bd%95%e5%b0%81%e8%a3%85%e4%b8%80%e4%b8%aa%e9%ab%98%e5%a4%8d%e7%94%a8%e7%9a%84-vue-%e5%89%8d%e7%ab%af%e7%bb%84%e4%bb%b6"><strong>问：13.如何封装一个高复用的 Vue 前端组件？</strong></h5>
+<p><strong>答：</strong> 1.我们可以把页面上的每个独立的可视/可交互区域/相同页面功能视为一个组件来解耦页面； 2.当我们确定了一个 vue 组件后，再从 html、css 和 js 三个方面把组件的自身逻辑放入组件内部,然后通过 Props，$emit 来保持与父组件进行传输的传递与事件的通信，对于跨父子关系的组件间，使用 eventBus 来做通信； 3.最后我们就可以在使用的地方使用 import 引入,Vue.Component(),或实例的 components 来注册它，最后在页面模板中使用； 4.组件内部我们可能用到动态 class、动态 style、组件的 Props 双向绑定、组件的生命周期等，具体逻辑需要根据组件本身功能来动态调优。</p>
 <hr>
-<h4 id="%e9%97%ae%e5%a6%82%e4%bd%95%e6%b3%a8%e5%86%8c%e4%b8%80%e4%b8%aa%e5%85%a8%e5%b1%80%e7%bb%84%e4%bb%b6%e5%b9%b6%e4%bd%bf%e7%94%a8%e5%ae%83"><strong>问：如何注册一个全局组件，并使用它？</strong></h4>
+<h5 id="%e9%97%ae14%e4%bb%80%e4%b9%88%e6%98%af%e5%89%8d%e7%ab%af%e5%b7%a5%e7%a8%8b%e5%8c%96%e6%80%9d%e6%83%b3"><strong>问：14.什么是前端工程化思想？</strong></h5>
 <p><strong>答：</strong></p>
+<p>前端工程化是把前端项目当成一个工程，制定合理的开发流程、工具集的使用以及合理的开发规范，来贯穿开发、优化、测试、代码管理，到发布部署的一种管理思想。</p>
 <hr>
-<h4 id="%e9%97%ae%e5%b1%80%e9%83%a8%e7%bb%84%e4%bb%b6%e5%8f%88%e6%98%af%e5%a6%82%e4%bd%95%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%bd%bf%e7%94%a8%e7%9a%84"><strong>问：局部组件又是如何注册并使用的？</strong></h4>
-<p><strong>答：</strong></p>
+<h5 id="%e9%97%ae15%e5%b7%a5%e7%a8%8b%e5%8c%96%e5%8f%af%e4%bb%a5%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98"><strong>问：15.工程化可以解决什么问题？</strong></h5>
+<p><strong>答：</strong><br>
+前端工程化可以解决业务代码维护难，开发流程不统一，代码格式风格多样性，测试覆盖率低成效不显著， 发布部署流程繁琐复杂等问题。</p>
 <hr>
-<h4 id="%e9%97%ae%e7%bb%84%e4%bb%b6%e7%9a%84%e5%b0%81%e8%a3%85%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98"><strong>问：组件的封装需要注意什么问题？</strong></h4>
+<h5 id="%e9%97%ae16%e6%98%af%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e8%bf%99%e4%ba%9b%e9%97%ae%e9%a2%98%e7%9a%84"><strong>问：16.是如何处理这些问题的？</strong></h5>
 <p><strong>答：</strong></p>
-<hr>
-<h4 id="%e9%97%ae%e5%a6%82%e4%bd%95%e5%b0%81%e8%a3%85%e4%b8%80%e4%b8%aa%e9%ab%98%e5%a4%8d%e7%94%a8%e7%9a%84%e5%89%8d%e7%ab%af%e7%bb%84%e4%bb%b6"><strong>问：如何封装一个高复用的前端组件？</strong></h4>
-<p><strong>答：</strong></p>
-<hr>
-<h4 id="%e9%97%ae%e4%bb%80%e4%b9%88%e6%98%af%e5%b7%a5%e7%a8%8b%e5%8c%96%e6%80%9d%e6%83%b3"><strong>问：什么是工程化思想？</strong></h4>
-<p><strong>答：</strong></p>
-<hr>
-<h4 id="%e9%97%ae%e5%b7%a5%e7%a8%8b%e5%8c%96%e5%8f%af%e4%bb%a5%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98"><strong>问：工程化可以解决什么问题？</strong></h4>
-<p><strong>答：</strong></p>
-<hr>
-<h4 id="%e9%97%ae%e6%98%af%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e8%bf%99%e4%ba%9b%e9%97%ae%e9%a2%98%e7%9a%84"><strong>问：是如何处理这些问题的？</strong></h4>
-<p><strong>答：</strong></p>
-<hr>
-<h4 id="%e9%97%ae%e5%b7%a5%e7%a8%8b%e5%8c%96%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e5%93%aa%e4%ba%9b%e9%97%ae%e9%a2%98"><strong>问：工程化需要注意哪些问题？</strong></h4>
-<p><strong>答：</strong></p>
+<p>对于一个好的前端工程我们一般都是从以下方面来着手：</p>
+<p>制定开发规范：包含高效率的开发流程、代码命名/注释/文档规范，合理的目录结构，数据请求规范，路由管理方案，静态资源处理等等；<br>
+模块化规范：统筹模块化方案，合理设计全局模块以及按需引入的局部模块的使用，使用可靠的三方工具库，尽可能减少代码冗余，保证模块的单一职责，高聚低耦等；<br>
+组件化开发：尽可能拆分为组件，封装各个组件的功能，保证组件的高复用性、灵活性以及与外部的通信畅通；<br>
+性能优化：对工程作必要的性能测试，对于性能瓶颈项制定解决方案，并做持续优化。优化数据请求，合并请求，Node 中间件优化请求数据,对静态资源压缩/CDN 部署，尽可能使用字体图标代替图片资源，合理的使用数据缓存等等；<br>
+项目测试：编写必要的单元测试，保证功能的可靠性，处理好逻辑的边界问题以及合理的容错机制；<br>
+发布部署：使用持续集成，持续交付的管理模式来简化发布部署流程，提高发布部署的效率，将更多的时间转移至功能开发测试上；<br>
+开发流程：优化开发流程，保证需求评审、技术评估、业务开发、测试、debugger 以及发布上线的高效率沟通，输出留存必要的协作文档资料，尽可能地减少无效沟通，采用小组式敏捷开发思想；<br>
+开发工具集：使用必要的工具集，提升开发管理效率，比如使用编辑器 VSCode 与其插件、代码管理工具与平台 Svn/Git/SourceTree/Gitee/GitLab、Webapack 打包工具 + npm script 开发工作流、Tapd 协作平台、产品设计平台 Axure/ 蓝湖、思维导图 XMind 等等。</p>
 <hr>
 
     </body>

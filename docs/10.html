@@ -2,11 +2,11 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
-        
+        <title>Vue 相关的 25 道面试题</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <style>
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
@@ -18,9 +18,194 @@
             }
         </style>
         
-        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
     </head>
     <body class="vscode-light">
-        
+        <h4 id="vue-%e7%9b%b8%e5%85%b3%e7%9a%84-25-%e9%81%93%e9%9d%a2%e8%af%95%e9%a2%98">Vue 相关的 25 道面试题</h4>
+<ul>
+<li>v-if 与 v-show 有什么不同？</li>
+<li>Vue 的响应式原理</li>
+<li>Vue 的数据绑定</li>
+<li>为什么 Vue 的 data 是一个函数而不是一个对象？</li>
+<li>data 与 props 有什么区别？</li>
+<li>Vue 中的父子组件如何传递数据与事件通信？</li>
+<li>使用过 Vue 中 render 函数吗？使用 render 与使用 templete 模板有什么区别？</li>
+<li>render 中可以直接使用 return createElement();重复创建 VNode 吗？</li>
+<li>如何解决上述 render 重复创建 VNode 的问题？</li>
+<li>通过 render 创建 input,可以直接使用 v-model 绑定其 value 吗？</li>
+<li>如何解决通过 render 创建 input,可以使用 v-model 绑定其 value 的问题？</li>
+<li>直接为 Vue 实例 vm,赋值添加属性，请问该属性是响应式的吗？</li>
+<li>如何在 Vue 中使用插件?</li>
+<li>如何在 Vue 中使用过滤器?</li>
+<li>使用过 Vue 中的自定义指令吗?简述它的具体使用</li>
+<li>介绍 Virtual DOM,与真实的 DOM 有什么区别？</li>
+<li>Vue 的 Virtual DOM 是如何实现的？</li>
+<li>Vue2.0 与 Vue3.0 有什么不同？简述其不同之处</li>
+<li>简述 flux 原理</li>
+<li>项目中的数据是如何管理的？</li>
+<li>Vuex 的原理什么？如何实现一个简单的 store 模式</li>
+<li>项目中如何使用 Vuex</li>
+<li>Vue-router 有哪些 api,如何在项目中使用 Vue-router 以及相关配置？</li>
+<li>在项目中,是如何组织路由管理的？</li>
+<li>Vue-router 的 hash 模式与 history 模式是什么?两者的区别？如何分别使用两种模式？</li>
+</ul>
+<hr>
+<h4 id="%e9%97%ae1v-if-%e4%b8%8e-v-show-%e6%9c%89%e4%bb%80%e4%b9%88%e7%9b%b8%e5%90%8c%e7%82%b9%e4%bb%80%e4%b9%88%e4%b8%8d%e5%90%8c"><strong>问：1.v-if 与 v-show 有什么相同点，什么不同？</strong></h4>
+<p><strong>答：</strong></p>
+<p>都是 Vue 的条件指令，用于控制条件块在页面中的显示与隐藏。<br>
+v-if 切换为 false 时，绑定的元素会从 DOM 树中移除，是通过 js 控制；而 v-show 则是控制元素的 display 值，元素一直在 DOM 中显示，只是 display 是否为 none 的改变。<br>
+v-if 可以与 v-else、v-else-if 配合使用，v-show 不可以。<br>
+v-if 是惰性的，只有为 true 时才会渲染该元素。不适合频繁切换元素显示/隐藏的场景，有更高的切换开销；<br>
+而 v-show 有更高的初始渲染开销，只是 CSS 的切换，适合频繁切换元素的场景。</p>
+<hr>
+<h4 id="%e9%97%ae2vue-%e7%9a%84%e5%93%8d%e5%ba%94%e5%bc%8f%e5%8e%9f%e7%90%86"><strong>问：2.Vue 的响应式原理</strong></h4>
+<p><strong>答：</strong><br>
+生成响应式对象：在 Vue 初始化时，使用 defineReactive 把 data 中的属性通过 Object.definePorperty(),设置其 get 与 set，使其变成响应式对象 Observer。<br>
+依赖搜集：compile 解析 templete,得到 Directive 的依赖搜集，注入到组件实例的 Watcher 中,以便数据在发生变化时，派发更新。<br>
+派发更新：当 Observe 的 set 被触发时，会通知 Watcher，调用 render 函数，派发视图更新。</p>
+<hr>
+<h4 id="%e9%97%ae3vue-%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%91%e5%ae%9a"><strong>问：3.Vue 的数据绑定</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae4%e5%ae%9e%e7%8e%b0%e4%b8%80%e4%b8%aa%e5%8f%8c%e5%90%91%e6%95%b0%e6%8d%ae%e7%bb%91%e5%ae%9a%e7%9a%84%e5%8a%9f%e8%83%bd"><strong>问：4.实现一个双向数据绑定的功能</strong></h4>
+<p><strong>答：</strong></p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// html</span>
+&lt;input type=<span class="hljs-string">'text'</span> id=<span class="hljs-string">'a'</span>/&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'b'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+
+<span class="hljs-comment">// js</span>
+<span class="hljs-keyword">var</span> obj={
+  <span class="hljs-attr">value</span>:<span class="hljs-string">''</span>
+};
+
+<span class="hljs-built_in">Object</span>.definePorperty(obj,<span class="hljs-string">'input'</span>,{
+  <span class="hljs-attr">set</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newVal</span>)</span>{
+    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'a'</span>).value=newVal;
+    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'b'</span>).value=newVal;
+  },
+  <span class="hljs-attr">get</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'触发get'</span>);
+  }
+});
+
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'keyup'</span>,fucntion(e){
+  obj.input=e.target.value;
+});
+
+</div></code></pre>
+<hr>
+<h4 id="%e9%97%ae5%e4%b8%ba%e4%bb%80%e4%b9%88-vue-%e7%9a%84-data-%e6%98%af%e4%b8%80%e4%b8%aa%e5%87%bd%e6%95%b0%e8%80%8c%e4%b8%8d%e6%98%af%e4%b8%80%e4%b8%aa%e5%af%b9%e8%b1%a1"><strong>问：5.为什么 Vue 的 data 是一个函数而不是一个对象？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae6data-%e4%b8%8e-props-%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab"><strong>问：6.data 与 props 有什么区别？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae7vue-%e4%b8%ad%e7%9a%84%e7%88%b6%e5%ad%90%e7%bb%84%e4%bb%b6%e5%a6%82%e4%bd%95%e4%bc%a0%e9%80%92%e6%95%b0%e6%8d%ae%e4%b8%8e%e4%ba%8b%e4%bb%b6%e9%80%9a%e4%bf%a1"><strong>问：7.Vue 中的父子组件如何传递数据与事件通信？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae8%e5%a6%82%e4%bd%95%e8%ae%a9-css-%e5%8f%aa%e5%9c%a8%e5%bd%93%e5%89%8d%e7%bb%84%e4%bb%b6%e4%b8%ad%e8%b5%b7%e4%bd%9c%e7%94%a8"><strong>问：8.如何让 CSS 只在当前组件中起作用?</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae9%e8%af%b7%e5%88%97%e4%b8%be%e5%87%ba-vue-%e4%b8%ad%e5%b8%b8%e7%94%a8%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e9%92%a9%e5%ad%90%e5%87%bd%e6%95%b0"><strong>问：9.请列举出 Vue 中常用的生命周期钩子函数</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae8%e4%bd%bf%e7%94%a8%e8%bf%87-vue-%e4%b8%ad-render-%e5%87%bd%e6%95%b0%e5%90%97%e4%bd%bf%e7%94%a8-render-%e4%b8%8e%e4%bd%bf%e7%94%a8-templete-%e6%a8%a1%e6%9d%bf%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab"><strong>问：8.使用过 Vue 中 render 函数吗？使用 render 与使用 templete 模板有什么区别？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae9render-%e4%b8%ad%e5%8f%af%e4%bb%a5%e7%9b%b4%e6%8e%a5%e4%bd%bf%e7%94%a8-return-createelement%e9%87%8d%e5%a4%8d%e5%88%9b%e5%bb%ba-vnode-%e5%90%97"><strong>问：9.render 中可以直接使用 return createElement();重复创建 VNode 吗？</strong></h4>
+<p><strong>答：</strong><br>
+不可以，在使用 render 创建 VNode 时，必须保证它是唯一的。</p>
+<pre><code class="language-javascript"><div>render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>{
+  <span class="hljs-keyword">var</span> myParagraphVNode = createElement(<span class="hljs-string">'p'</span>, <span class="hljs-string">'hi'</span>)
+  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>, [
+    <span class="hljs-comment">// 错误 - 重复的 VNode,不允许</span>
+    myParagraphVNode, myParagraphVNode
+  ])
+}
+</div></code></pre>
+<hr>
+<h4 id="%e9%97%ae10%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e4%b8%8a%e8%bf%b0-render-%e9%87%8d%e5%a4%8d%e5%88%9b%e5%bb%ba-vnode-%e7%9a%84%e9%97%ae%e9%a2%98"><strong>问：10.如何解决上述 render 重复创建 VNode 的问题？</strong></h4>
+<p><strong>答：</strong><br>
+需要重复很多次的元素/组件，你可以使用工厂函数来实现。<br>
+例如，下面这渲染函数用完全合法的方式渲染了 20 个相同的段落：</p>
+<pre><code class="language-javascript"><div>render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>{
+  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>,
+    <span class="hljs-built_in">Array</span>.apply(<span class="hljs-literal">null</span>, { <span class="hljs-attr">length</span>: <span class="hljs-number">20</span> }).map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'p'</span>, <span class="hljs-string">'hi'</span>)
+    })
+  )
+}
+
+</div></code></pre>
+<hr>
+<h4 id="%e9%97%ae11%e9%80%9a%e8%bf%87-render-%e5%88%9b%e5%bb%ba-input%e5%8f%af%e4%bb%a5%e7%9b%b4%e6%8e%a5%e4%bd%bf%e7%94%a8-v-model-%e7%bb%91%e5%ae%9a%e5%85%b6-value-%e5%90%97"><strong>问：11.通过 render 创建 input,可以直接使用 v-model 绑定其 value 吗？</strong></h4>
+<p><strong>答：</strong><br>
+render 中没有与 v-model 的直接对应，必须自己实现相应的逻辑，这也是使用 render 的代价。</p>
+<hr>
+<h4 id="%e9%97%ae12%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e9%80%9a%e8%bf%87-render-%e5%88%9b%e5%bb%ba-input%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8-v-model-%e7%bb%91%e5%ae%9a%e5%85%b6-value-%e7%9a%84%e9%97%ae%e9%a2%98"><strong>问：12.如何解决通过 render 创建 input,可以使用 v-model 绑定其 value 的问题？</strong></h4>
+<p><strong>答：</strong><br>
+可以使用 creatElement 的 on 方法，添加对 input 的事件监听。</p>
+<pre><code class="language-javascript"><div><span class="hljs-comment">// 为input 添加</span>
+props: [<span class="hljs-string">'value'</span>],
+<span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>{
+  <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
+  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'input'</span>, {
+    <span class="hljs-attr">domProps</span>: {
+      <span class="hljs-attr">value</span>: self.value
+    },
+    <span class="hljs-attr">on</span>: {
+      <span class="hljs-attr">input</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>{
+        self.$emit(<span class="hljs-string">'input'</span>, event.target.value)
+      }
+    }
+  })
+}
+</div></code></pre>
+<hr>
+<h4 id="%e9%97%ae13%e7%9b%b4%e6%8e%a5%e4%b8%ba-vue-%e5%ae%9e%e4%be%8b-vm%e8%b5%8b%e5%80%bc%e6%b7%bb%e5%8a%a0%e5%88%a0%e9%99%a4%e5%b1%9e%e6%80%a7%e8%af%b7%e9%97%ae%e8%af%a5%e5%b1%9e%e6%80%a7%e6%98%af%e5%93%8d%e5%ba%94%e5%bc%8f%e7%9a%84%e5%90%97"><strong>问：13.直接为 Vue 实例 vm,赋值添加/删除属性，请问该属性是响应式的吗？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae14%e5%a6%82%e4%bd%95%e5%9c%a8-vue-%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%8f%92%e4%bb%b6"><strong>问：14.如何在 Vue 中使用插件?</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae15%e5%a6%82%e4%bd%95%e5%9c%a8-vue-%e4%b8%ad%e4%bd%bf%e7%94%a8%e8%bf%87%e6%bb%a4%e5%99%a8"><strong>问：15.如何在 Vue 中使用过滤器?</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae16%e4%bd%bf%e7%94%a8%e8%bf%87-vue-%e4%b8%ad%e7%9a%84%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8c%87%e4%bb%a4%e5%90%97%e7%ae%80%e8%bf%b0%e5%ae%83%e7%9a%84%e5%85%b7%e4%bd%93%e4%bd%bf%e7%94%a8"><strong>问：16.使用过 Vue 中的自定义指令吗?简述它的具体使用</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae17%e4%bb%8b%e7%bb%8d-virtual-dom%e4%b8%8e%e7%9c%9f%e5%ae%9e%e7%9a%84-dom-%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab"><strong>问：17.介绍 Virtual DOM,与真实的 DOM 有什么区别？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae18vue-%e7%9a%84-virtual-dom-%e6%98%af%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0%e7%9a%84"><strong>问：18.Vue 的 Virtual DOM 是如何实现的？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae19vue20-%e4%b8%8e-vue30-%e6%9c%89%e4%bb%80%e4%b9%88%e4%b8%8d%e5%90%8c%e7%ae%80%e8%bf%b0%e5%85%b6%e4%b8%8d%e5%90%8c%e4%b9%8b%e5%a4%84"><strong>问：19.Vue2.0 与 Vue3.0 有什么不同？简述其不同之处</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae20%e7%ae%80%e8%bf%b0-flux-%e5%8e%9f%e7%90%86"><strong>问：20.简述 flux 原理</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae21%e9%a1%b9%e7%9b%ae%e4%b8%ad%e7%9a%84%e6%95%b0%e6%8d%ae%e6%98%af%e5%a6%82%e4%bd%95%e7%ae%a1%e7%90%86%e7%9a%84"><strong>问：21.项目中的数据是如何管理的？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae22vuex-%e7%9a%84%e5%8e%9f%e7%90%86%e4%bb%80%e4%b9%88%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0%e4%b8%80%e4%b8%aa%e7%ae%80%e5%8d%95%e7%9a%84-store-%e6%a8%a1%e5%bc%8f"><strong>问：22.Vuex 的原理什么？如何实现一个简单的 store 模式</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae23%e9%a1%b9%e7%9b%ae%e4%b8%ad%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8-vuex"><strong>问：23.项目中如何使用 Vuex</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae24vue-router-%e6%9c%89%e5%93%aa%e4%ba%9b-api%e5%a6%82%e4%bd%95%e5%9c%a8%e9%a1%b9%e7%9b%ae%e4%b8%ad%e4%bd%bf%e7%94%a8-vue-router-%e4%bb%a5%e5%8f%8a%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae"><strong>问：24.Vue-router 有哪些 api,如何在项目中使用 Vue-router 以及相关配置？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae25%e5%9c%a8%e9%a1%b9%e7%9b%ae%e4%b8%ad%e6%98%af%e5%a6%82%e4%bd%95%e7%bb%84%e7%bb%87%e8%b7%af%e7%94%b1%e7%ae%a1%e7%90%86%e7%9a%84"><strong>问：25.在项目中,是如何组织路由管理的？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<h4 id="%e9%97%ae26vue-router-%e7%9a%84-hash-%e6%a8%a1%e5%bc%8f%e4%b8%8e-history-%e6%a8%a1%e5%bc%8f%e6%98%af%e4%bb%80%e4%b9%88%e4%b8%a4%e8%80%85%e7%9a%84%e5%8c%ba%e5%88%ab%e5%a6%82%e4%bd%95%e5%88%86%e5%88%ab%e4%bd%bf%e7%94%a8%e4%b8%a4%e7%a7%8d%e6%a8%a1%e5%bc%8f"><strong>问：26.Vue-router 的 hash 模式与 history 模式是什么?两者的区别？如何分别使用两种模式？</strong></h4>
+<p><strong>答：</strong></p>
+<hr>
+<pre><code><code><div>
+</div></code></code></pre>
+
     </body>
     </html>
